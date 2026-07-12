@@ -122,3 +122,25 @@ themeBtn.addEventListener("click", () => {
         themeBtn.innerHTML = "🌙";
     }
 });
+// EmailJS
+emailjs.init({
+  publicKey: "V-kx5UkPrqWJgEn_Q",
+});
+
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_hh5jm7b",
+    "template_l14vabg",
+    this
+  )
+  .then(() => {
+    alert("✅ Message sent successfully!");
+    this.reset();
+  })
+  .catch((error) => {
+    alert("❌ Failed to send message.");
+    console.error(error);
+  });
+});
